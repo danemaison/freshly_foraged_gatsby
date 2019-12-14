@@ -5,6 +5,20 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Berkshire Swash`,
+          },
+          {
+            family: "Raleway",
+            variants: [`400`, `500`, '700', '800'],
+          },
+        ],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -14,6 +28,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    "gatsby-plugin-styled-components",
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
