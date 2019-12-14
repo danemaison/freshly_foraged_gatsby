@@ -19,17 +19,15 @@ const NavBar = styled.div`
   align-items: center;
 `
 
-const Wrapper = styled.div`
-width:50%;
-`
+
 const Brand = styled(Img)`
-  width: 50px;
+  width: 140px;
 `
 
 export default ()=>{
     const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "gatsby-icon.png" }) {
+      placeholderImage: file(relativePath: { eq: "nav-logo-gatsby-2.png" }) {
         childImageSharp {
           fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid
@@ -41,9 +39,9 @@ export default ()=>{
 
   return (
     <NavBar>
-      <Wrapper>
-        <Brand fluid={data.placeholderImage.childImageSharp.fluid} />
-      </Wrapper>
+
+      <Brand fluid={data.placeholderImage.childImageSharp.fluid} />
+
       <Desktop />
       {/* <Mobile /> */}
     </NavBar>
