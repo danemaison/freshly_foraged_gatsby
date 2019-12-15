@@ -7,6 +7,7 @@ import Img from "gatsby-image"
 
 const NavBar = styled.div`
   position: fixed;
+  z-index:999;
   top: 0;
   left: 0;
   width:100%;
@@ -26,21 +27,21 @@ const Brand = styled(Img)`
 
 export default ()=>{
     const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "nav-logo-gatsby-2.png" }) {
-        childImageSharp {
+    query{
+      file(relativePath:{ eq: "nav-logo-gatsby-2.png"}){
+        childImageSharp{
           fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid
           }
         }
       }
+
     }
   `)
-
   return (
     <NavBar>
 
-      <Brand fluid={data.placeholderImage.childImageSharp.fluid} />
+      <Brand fluid={data.file.childImageSharp.fluid} />
 
       <Desktop />
       {/* <Mobile /> */}

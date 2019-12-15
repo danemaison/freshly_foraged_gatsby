@@ -14,17 +14,18 @@ module.exports = {
           },
           {
             family: "Raleway",
-            variants: [`400`, `500`, '700', '800'],
+            variants: [`400`, `500`, "700", "800"],
           },
         ],
       },
     },
+    `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `content`,
+        path: `${__dirname}/src/content`,
       },
     },
     `gatsby-transformer-sharp`,
