@@ -4,8 +4,11 @@ import { Link } from 'gatsby';
 import leaf from '../../images/leaf-button.png'
 const Links = styled.nav`
   margin-top:10px;
-  /* width:50%; */
+  display:none;
   text-align:right;
+  @media ${({theme})=>theme.mediaQueries.small}{
+    display:block;
+  }
 `;
 
 const StyledLink = styled(Link)`

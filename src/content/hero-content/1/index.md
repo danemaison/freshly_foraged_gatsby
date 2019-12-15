@@ -1,5 +1,7 @@
 ---
-header: Test Test
-subheader: Test
-image: carousel-1.jpg
+header: Your Gateway to
+subheader: Herbal Medicine
+image: carousel-2.jpg
+linkTo: /shop
+linkName: Shop Now
 ---
