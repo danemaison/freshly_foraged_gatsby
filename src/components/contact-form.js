@@ -100,15 +100,15 @@ const ContactForm = () => {
         />
         <Label>
           Name
-          <Input required type="text" />
+          <Input name="name" required type="text" />
         </Label>
         <Label>
           Email
-          <Input required type="email" />
+          <Input name="email" required type="email" />
         </Label>
         <Label>
           Message
-          <TextArea required />
+          <TextArea name="message" required />
         </Label>
         <Button type="submit">Send</Button>
       </Form>
