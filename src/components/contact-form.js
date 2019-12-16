@@ -52,16 +52,18 @@ const Button = styled.button`
   background-size: 100px;
 `
 const Input = styled.input`
+  -webkit-appearance: none;
   border-radius: 3px;
   height: 40px;
   padding: 0px 5px;
   font-size: 0.9rem;
   border: 1px solid ${({ theme }) => theme.grey};
   &:focus {
-    outline:2px solid ${({theme})=>theme.primary};
+    outline: 2px solid ${({ theme }) => theme.primary};
   }
 `
 const TextArea = styled.textarea`
+  -webkit-appearance: none;
   border-radius: 3px;
   padding: 5px;
   font-size: 0.9rem;
