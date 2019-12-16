@@ -93,6 +93,11 @@ const ContactForm = () => {
         or fill out the contact form below!
       </Subheader>
       <Form name="contact-landing" method="POST" data-netlify="true">
+        <input
+          type="hidden"
+          name="form-name"
+          value="contact-landing"
+        />
         <Label>
           Name
           <Input required type="text" />
