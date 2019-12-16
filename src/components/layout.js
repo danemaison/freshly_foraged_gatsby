@@ -24,16 +24,6 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const changeVhVariable = () => {
-    const vh = typeof window !== "undefined" && window.innerHeight * 0.01
-    typeof document !== "undefined" &&
-      document.documentElement.style.setProperty("--vh", `${vh}px`)
-  }
-
-  useEffect(() => {
-    changeVhVariable()
-  }, [])
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
