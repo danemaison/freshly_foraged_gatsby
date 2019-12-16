@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -13,10 +17,22 @@ module.exports = {
             family: `Berkshire Swash`,
           },
           {
-            family: "Raleway",
+            family: `Raleway`,
             variants: [`400`, `500`, "700", "800"],
           },
+          {
+            family: `Open Sans`
+          }
         ],
+      },
+    },
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        // The domain name of your Shopify shop.
+        shopName: process.env.SHOP_NAME,
+        // The storefront access token
+        accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
       },
     },
     `gatsby-transformer-remark`,

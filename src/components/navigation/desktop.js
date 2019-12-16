@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import leaf from '../../images/leaf-button.png'
+
 const Links = styled.nav`
   margin-top:10px;
   display:none;

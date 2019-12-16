@@ -1,6 +1,6 @@
 ---
 header: Your Gateway to
-subheader: Herbal Medicine
+subheader: Herbal Wellness
 image: carousel-2.jpg
 linkTo: /shop
 linkName: Shop Now

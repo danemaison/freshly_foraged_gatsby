@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Desktop from "./desktop"
 import Mobile from "./mobile"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 const NavBar = styled.div`
@@ -38,7 +38,9 @@ export default () => {
   `)
   return (
     <NavBar>
-      <Brand fluid={data.file.childImageSharp.fluid} />
+      <Link to="/">
+        <Brand fluid={data.file.childImageSharp.fluid} />
+      </Link>
       <Desktop />
       <Mobile />
     </NavBar>

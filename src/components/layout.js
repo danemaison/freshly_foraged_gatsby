@@ -1,12 +1,10 @@
-import React from "react"
-
-import styled from 'styled-components';
+import React, {useEffect} from "react"
+import styled from "styled-components"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { ThemeProvider } from "styled-components"
-import {theme} from '../styling/theme';
-import {GlobalStyle} from '../styling/global-style';
-
+import { theme } from "../styling/theme"
+import { GlobalStyle } from "../styling/global-style"
 import Nav from "./navigation/navbar"
 import Footer from "./footer"
 
@@ -15,6 +13,7 @@ const Main = styled.main`
 `
 
 const Layout = ({ children }) => {
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -24,6 +23,16 @@ const Layout = ({ children }) => {
       }
     }
   `)
+
+  const changeVhVariable = () => {
+    const vh = typeof window !== "undefined" && window.innerHeight * 0.01
+    typeof document !== "undefined" &&
+      document.documentElement.style.setProperty("--vh", `${vh}px`)
+  }
+
+  useEffect(() => {
+    changeVhVariable()
+  }, [])
 
   return (
     <ThemeProvider theme={theme}>

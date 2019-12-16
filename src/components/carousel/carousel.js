@@ -4,6 +4,7 @@ import ImageTemplate from "./image-template"
 import { graphql, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircle } from "@fortawesome/free-solid-svg-icons"
+import { useWindowSize } from '../utils/window-size';
 
 const CarouselContainer = styled.div`
   overflow-x: hidden;
@@ -82,34 +83,31 @@ const Carousel = () => {
   const [translateX, setTranslateX] = useState(0)
   const [currentImage, setCurrentImage] = useState(0)
   let timer = null
-  // function resetTimer() {
-  //   clearInterval(timer)
-  //   timer = setInterval(nextImage, 5000)
-  // }
-  // function nextImage(){
-  //   console.log(currentImage);
-  //   if(currentImage + 1 > arrLength){
-  //     setCurrentImage(0);
-  //     setTranslateX(0);
-  //   }
-  //   else{
-  //     setTranslateX(currentImage + 1 * -window.innerWidth)
-  //     setCurrentImage(currentImage + 1)
-  //   }
-  // }
+  const size = useWindowSize()
 
-  function goToImage(e) {
-    const id = e.currentTarget.id
-    setCurrentImage(id);
-    setTranslateX(-window.innerWidth * id);
+  function nextImage(){
+    if(currentImage + 1 >= arrLength){
+      setCurrentImage(0);
+      setTranslateX(0);
+    }
+    else{
+      setTranslateX(currentImage + 1 * -size.width)
+      setCurrentImage(currentImage + 1)
+    }
   }
 
-  window.addEventListener("resize", () => {
-    setTranslateX(currentImage * -window.innerWidth)
-  })
+  function goToImage(e) {
+    clearInterval(timer);
+    const id = e.currentTarget.id
+    setCurrentImage(id);
+    setTranslateX(-size.width * id);
+  }
+
   useEffect(() => {
-    // timer = setInterval(nextImage, 1000)
-  }, [])
+    setTranslateX(currentImage * -size.width)
+    timer = setInterval(nextImage, 4000)
+    return ()=>clearInterval(timer);
+  }, [currentImage, size.width])
 
   return (
     <CarouselContainer>

@@ -20,17 +20,22 @@ const Header = styled.div`
   margin-top: -30px;
   color: white;
   font-weight:700;
-  /* font-family: "Berkshire Swash"; */
-  font-size: 3rem;
+  font-size: 2.3rem;
   z-index: 2;
+  @media ${({theme})=>theme.mediaQueries.small}{
+    font-size:3rem;
+  }
 `
 const SubHeader = styled.div`
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   color: ${({ theme }) => theme.primary};
   font-family: "Berkshire Swash";
   margin-top: -15px;
-  font-size: 4.5rem;
+  font-size: 2.8rem;
   z-index: 2;
+  @media ${({ theme }) => theme.mediaQueries.small} {
+    font-size: 4.5rem;
+  }
 `
 const Button = styled(Link)`
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
