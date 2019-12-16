@@ -47,7 +47,7 @@ const Nav = styled.nav`
   left: ${({ open }) => (open ? 0 : "-100%")};
   width: 100%;
   height: calc(100vh - 60px);
-  height: calc(100--vh - 60px);
+  height: calc(var(--vh, 1vh) * 100 - 60px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
