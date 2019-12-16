@@ -19,6 +19,7 @@ export function useWindowSize() {
   const [windowSize, setWindowSize] = useState(getSize)
 
   useEffect(() => {
+    changeVhVariable()
     if (!isClient) {
       return false
     }
