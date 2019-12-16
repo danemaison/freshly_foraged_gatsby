@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faInstagram} from '@fortawesome/free-brands-svg-icons';
 
 const Container = styled.footer`
   width: 100%;
   height: 60px;
+  padding: 0 16px;
   color: white;
   display: flex;
   position: relative;
@@ -23,6 +26,14 @@ const Container = styled.footer`
     }
   }
 `
+const Instagram = styled.a`
+  cursor:pointer;
+  color:white;
+  margin-top:5px;
+  @media ${({theme})=>theme.mediaQueries.small}{
+    margin:0;
+  }
+`
 const Footer = ()=>{
   return (
     <Container>
@@ -30,6 +41,9 @@ const Footer = ()=>{
         &copy; Freshly Foraged &nbsp;
         {`${new Date().getFullYear()}`}
       </div>
+      <Instagram href="https://www.instagram.com/freshly_foraged_/" target="_blank">
+        <FontAwesomeIcon icon={faInstagram} />
+      </Instagram>
     </Container>
   )
 }

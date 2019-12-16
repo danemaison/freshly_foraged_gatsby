@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Freshly Foraged | CBD Oil`,
+    description: `Freshly Foraged is committed to crafting products for our customers that will allow them to lead happier, healthier lives. Our products are created with high-quality cannabis extracts containing over 80 different cannabinoids in combination with a spectrum of other beneficial herbs and plant extracts.`,
+    author: `danemaison`,
   },
   plugins: [
     {
@@ -21,8 +21,8 @@ module.exports = {
             variants: [`400`, `500`, "700", "800"],
           },
           {
-            family: `Open Sans`
-          }
+            family: `Open Sans`,
+          },
         ],
       },
     },
@@ -53,10 +53,10 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#FFFF`,
+        theme_color: `#a9d7ac`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
