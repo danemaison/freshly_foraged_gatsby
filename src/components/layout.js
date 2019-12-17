@@ -7,7 +7,7 @@ import { theme } from "../styling/theme"
 import { GlobalStyle } from "../styling/global-style"
 import Nav from "./navigation/navbar"
 import Footer from "./footer"
-import { useWindowSize } from "./utils/window-size"
+import { useWindowSize } from "../utils/window-size"
 
 const Main = styled.main`
   padding-top: 60px;

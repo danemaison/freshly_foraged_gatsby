@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import ImageTemplate from "./image-template"
+import CarouselItem from '../../templates/carousel-item';
 import { graphql, useStaticQuery } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircle } from "@fortawesome/free-solid-svg-icons"
-import { useWindowSize } from '../utils/window-size';
+import { useWindowSize } from '../../utils/window-size';
 
 const CarouselContainer = styled.div`
   overflow-x: hidden;
@@ -113,7 +113,7 @@ const Carousel = () => {
     <CarouselContainer>
       <Images translateX={translateX}>
         {data.allFile.edges.map(data => {
-          return <ImageTemplate key={data.node.id} data={data} />
+          return <CarouselItem key={data.node.id} data={data} />
         })}
       </Images>
       <Dots>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BackgroundImage from "gatsby-background-image"
 import {Link} from 'gatsby';
-import leaf from "../../images/leaf-button.png";
+import leaf from "../images/leaf-button.png";
 
 const Container = styled(BackgroundImage)`
   display:flex;
