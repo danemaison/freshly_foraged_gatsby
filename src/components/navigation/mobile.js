@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   opacity: 1;
   > div {
-    transition: 0.1s;
+    transition: 0.25s;
     border-radius: 50px;
     background-color: ${({ theme }) => theme.primary};
     width: 100%;

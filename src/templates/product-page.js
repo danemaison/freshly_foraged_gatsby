@@ -23,7 +23,6 @@ const Description = styled.div`
 `
 export default function({pageContext}){
   const {product} = pageContext;
-  console.log(product)
   const {title, images, description} = product;
   return (
     <Layout>

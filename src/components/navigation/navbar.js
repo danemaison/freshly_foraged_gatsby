@@ -4,6 +4,7 @@ import Desktop from "./desktop"
 import Mobile from "./mobile"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import {Location} from '@reach/router';
 
 const NavBar = styled.div`
   position: fixed;
@@ -24,7 +25,7 @@ const Brand = styled(Img)`
   width: 140px;
 `
 
-export default () => {
+export default (props) => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "nav-logo-gatsby-2.png" }) {
@@ -41,8 +42,14 @@ export default () => {
       <Link to="/">
         <Brand fluid={data.file.childImageSharp.fluid} />
       </Link>
-      <Desktop />
-      <Mobile />
+      <Location>
+        {({location})=>(
+          <>
+          <Desktop location={location} />
+          <Mobile location={location} />
+          </>
+        )}
+      </Location>
     </NavBar>
   )
 }

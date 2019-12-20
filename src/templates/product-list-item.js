@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 
 const Container = styled.div`
   display: flex;
+  display: -webkit-flexbox;
   flex-direction: column;
   /* align-items:center; */
   /* border:1px solid black; */
@@ -14,19 +15,20 @@ const Container = styled.div`
   justify-content: flex-end;
   margin-top: 15px;
   width: 250px;
-  height: 325px;
+  height: 340px;
   padding: 15px;
 
 `
 
 const Wrapper = styled.div`
-  width:100%;
-  height:100%;
-  position:relative;
-  text-align:center;
+  /* border: 1px solid black; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-align: center;
 `
 const Overlay = styled(Link)`
-border-radius:5px;
+  border-radius:5px;
   z-index:9;
   display:flex;
   flex-direction:column;
@@ -76,6 +78,8 @@ const Price = styled.div`
   font-family:'Open Sans';
 `
 const Button = styled.button`
+  cursor:pointer;
+  flex-shrink: 0;
   background-color: ${({ theme }) => theme.primary};
   border: none;
   color: white;
@@ -86,7 +90,14 @@ const Button = styled.button`
 
 const ProductTemplate = ({data})=>{
   const {handle, images, priceRange, title} = data.node;
+  //  const price = Intl.NumberFormat(undefined, {
+  //    currency: minVariantPrice.currencyCode,
+  //    minimumFractionDigits: 2,
+  //    style: "currency",
+  //  }).format(variant.price)
+  const handleAddToCart = ()=>{
 
+  }
   return (
     <Container>
       <Wrapper>
@@ -97,7 +108,7 @@ const ProductTemplate = ({data})=>{
       </Wrapper>
       <Title>{title}</Title>
       <Price>{`$${priceRange.maxVariantPrice.amount}`}</Price>
-      <Button>Add to Cart</Button>
+      <Button onClick={handleAddToCart}>Add to Cart</Button>
       {/* {description} */}
     </Container>
   )

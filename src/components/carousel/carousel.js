@@ -40,7 +40,7 @@ const Images = styled.div`
   top: 0;
   left: 0;
   height: 100%;
-  transition: 0.8s ease-in-out;
+  transition: 0.5s ease-in-out;
   transform: translateX(${({ translateX }) => `${translateX}px`});
 `
 

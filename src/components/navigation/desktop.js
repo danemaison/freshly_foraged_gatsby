@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import leaf from '../../images/leaf-button.png'
@@ -36,12 +36,21 @@ const ShopLink = styled(StyledLink)`
   background-color: ${({ theme }) => theme.primary};
 `
 
-export default () =>{
+export default ({location}) =>{
+  const {pathname} = location;
+  const [path, setPath] = useState(pathname);
+  useEffect(()=>{
+    setPath(pathname);
+  }, [pathname])
   return (
     <Links>
       <StyledLink to="/">About</StyledLink>
       <StyledLink to="/">Contact</StyledLink>
-      <ShopLink to="/shop">Shop</ShopLink>
+      {path.includes("/shop") || path.includes('/product') ? (
+        <ShopLink to="/cart">Cart</ShopLink>
+      ) : (
+        <ShopLink to="/shop">Shop</ShopLink>
+      )}
     </Links>
   )
 }
