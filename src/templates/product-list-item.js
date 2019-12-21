@@ -1,24 +1,24 @@
-import React, {useContext} from 'react';
-import styled from 'styled-components';
-import Img from 'gatsby-image';
-import { Link } from 'gatsby';
+import React, { useContext, useState } from "react"
+import styled from "styled-components"
+import Img from "gatsby-image"
+import { Link } from "gatsby"
 import StoreContext from "../provider/context"
+import {formatPrice} from '../utils/format-price';
 
 const Container = styled.div`
   display: flex;
   display: -webkit-flexbox;
   flex-direction: column;
   /* align-items:center; */
-  /* border:1px solid black; */
+  border:1px dashed ${({theme})=>theme.grey};
   /* border-radius:5px; */
-  box-shadow: 0px 0px 25px rgba(0,0,0,.05);
-  border-radius:5px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
   justify-content: flex-end;
   margin-top: 15px;
   width: 250px;
   height: 340px;
   padding: 15px;
-
 `
 
 const Wrapper = styled.div`
@@ -29,57 +29,58 @@ const Wrapper = styled.div`
   text-align: center;
 `
 const Overlay = styled(Link)`
-  border-radius:5px;
-  z-index:9;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  align-items:center;
-  background-color:rgba(0,0,0,.75);
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  opacity:0;
-  color:white;
-  padding-bottom:25px;
-  text-decoration:none;
-  &:hover{
-    opacity:1;
+  border-radius: 5px;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  color: white;
+  padding-bottom: 25px;
+  text-decoration: none;
+  &:hover {
+    opacity: 1;
   }
-  transition:.35s ease-in-out;
+  transition: 0.35s ease-in-out;
 `
 
 const LearnMore = styled.button`
   cursor: pointer;
-  padding:10px 15px;
-  color:white;
-  border-radius:50px;
-  border:none;
-  background-color:rgba(0,0,0,.75);
+  padding: 10px 15px;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.75);
 `
 
 const Title = styled.div`
   font-size: 0.75rem;
+  font-weight:700;
   font-family: "Open Sans";
   text-align: left;
-  margin-top: 10px;
-  margin-bottom:5px;
+  margin-top: 15px;
+  margin-bottom: 5px;
 `
 
 const Image = styled.img`
-  max-height:100%;
-  max-width:100%;
+  max-height: 100%;
+  max-width: 100%;
 `
 
 const Price = styled.div`
-  font-size:.75rem;
-  text-align:left;
-  font-family:'Open Sans';
+  font-size: 0.75rem;
+  text-align: left;
+  font-family: "Open Sans";
 `
 const Button = styled.button`
-  cursor:pointer;
+  cursor: pointer;
   flex-shrink: 0;
   background-color: ${({ theme }) => theme.primary};
   border: none;
@@ -89,22 +90,45 @@ const Button = styled.button`
   border-radius: 5px;
 `
 
-const ProductTemplate = ({data})=>{
-  const {handle, images, priceRange, title} = data.node;
+const Quantity = styled.select`
+  margin-top:5px;
+
+`;
+
+const Row = styled.div`
+  display:flex;
+  width:100%;
+  justify-content:space-between;
+  align-items:flex-end;
+`
+const Label = styled.label`
+  color: ${({ theme }) => theme.darkGrey};
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.75rem;
+`
+const ProductTemplate = ({ data }) => {
+  const { handle, images, priceRange, title, shopifyId } = data.node
+  const price = formatPrice(priceRange.maxVariantPrice.amount)
+
+  const [quantity, setQuantity] = useState(1)
 
   const {
-    addVariantToCart,
+    addToCart,
     store: { client, adding },
   } = useContext(StoreContext)
 
-   const price = Intl.NumberFormat(undefined, {
-     currency: "USD",
-     minimumFractionDigits: 2,
-     style: "currency",
-   }).format(priceRange.maxVariantPrice.amount);
-  const handleAddToCart = ()=>{
-    // addVariantToCart();
+
+  const handleQuantityChange = ({ target }) => {
+    setQuantity(target.value)
   }
+
+  const handleAddToCart = () => {
+    addToCart(shopifyId, quantity)
+    setQuantity(1);
+  }
+
   return (
     <Container>
       <Wrapper>
@@ -114,11 +138,26 @@ const ProductTemplate = ({data})=>{
         <Image src={images[0].originalSrc} />
       </Wrapper>
       <Title>{title}</Title>
-      <Price>{`${price}`}</Price>
+      <Row>
+        <Price>{`${price}`}</Price>
+        <Label>
+          Quantity
+          <Quantity value={quantity} onChange={handleQuantityChange}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </Quantity>
+        </Label>
+      </Row>
       <Button onClick={handleAddToCart}>Add to Cart</Button>
       {/* {description} */}
     </Container>
   )
 }
 
-export default ProductTemplate;
+export default ProductTemplate

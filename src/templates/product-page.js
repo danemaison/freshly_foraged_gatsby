@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react"
 import Layout from "../components/layout"
-import {Container, Header} from '../components/ui/elements';
-import styled from 'styled-components';
+import { Container, Header } from "../components/ui/elements"
+import styled from "styled-components"
 
 const ProductPageContainer = styled(Container)`
-  padding-top:25px;
+  padding-top: 25px;
 `
 const Row = styled.div`
   padding-top: 25px;
@@ -20,25 +20,23 @@ const Row = styled.div`
   @media ${({ theme }) => theme.mediaQueries.medium} {
     flex-direction: row;
   }
-
 `
 
 const Image = styled.img`
-  max-width:300px;
-  object-fit:contain;
+  max-width: 300px;
+  object-fit: contain;
 `
 const ImageWrapper = styled.div`
-  /* width:40%; */
-  text-align:center;
+  text-align: center;
 `
 
 const Description = styled.div`
-  @media ${({theme})=>theme.mediaQueries.large}{
-    padding-right:64px;
+  @media ${({ theme }) => theme.mediaQueries.large} {
+    padding-right: 64px;
   }
 `
-export default function({pageContext: {product}}){
-  const {title, images, descriptionHtml} = product;
+export default function({ pageContext: { product } }) {
+  const { title, images, descriptionHtml } = product
   return (
     <Layout>
       <ProductPageContainer>
