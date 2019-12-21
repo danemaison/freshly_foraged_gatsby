@@ -14,6 +14,7 @@ exports.createPages = async ({ graphql, actions }) => {
             handle
             shopifyId
             description
+            descriptionHtml
             availableForSale
             priceRange {
               maxVariantPrice {
