@@ -9,9 +9,7 @@ const Container = styled.div`
   display: flex;
   display: -webkit-flexbox;
   flex-direction: column;
-  /* align-items:center; */
   border:1px dashed ${({theme})=>theme.grey};
-  /* border-radius:5px; */
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   justify-content: flex-end;
@@ -22,7 +20,6 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
-  /* border: 1px solid black; */
   width: 100%;
   height: 100%;
   position: relative;
@@ -79,7 +76,7 @@ const Price = styled.div`
   text-align: left;
   font-family: "Open Sans";
 `
-const Button = styled.button`
+const AddToCart = styled.button`
   cursor: pointer;
   flex-shrink: 0;
   background-color: ${({ theme }) => theme.primary};
@@ -90,16 +87,13 @@ const Button = styled.button`
   border-radius: 5px;
 `
 
-const Quantity = styled.select`
-  margin-top:5px;
 
-`;
 
 const Row = styled.div`
-  display:flex;
-  width:100%;
-  justify-content:space-between;
-  align-items:flex-end;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
 `
 const Label = styled.label`
   color: ${({ theme }) => theme.darkGrey};
@@ -108,6 +102,10 @@ const Label = styled.label`
   align-items: flex-end;
   font-size: 0.75rem;
 `
+const Quantity = styled.select`
+  margin-top: 5px;
+`
+
 const ProductTemplate = ({ data }) => {
   const { handle, images, priceRange, title, shopifyId } = data.node
   const price = formatPrice(priceRange.maxVariantPrice.amount)
@@ -154,7 +152,7 @@ const ProductTemplate = ({ data }) => {
           </Quantity>
         </Label>
       </Row>
-      <Button onClick={handleAddToCart}>Add to Cart</Button>
+      <AddToCart onClick={handleAddToCart}>Add to Cart</AddToCart>
       {/* {description} */}
     </Container>
   )
