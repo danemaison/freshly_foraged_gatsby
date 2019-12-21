@@ -3,13 +3,12 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
 import StoreContext from "../provider/context"
-import {formatPrice} from '../utils/format-price';
+import { formatPrice } from "../utils/format-price"
 
 const Container = styled.div`
   display: flex;
-  display: -webkit-flexbox;
   flex-direction: column;
-  border:1px dashed ${({theme})=>theme.grey};
+  border: 1px dashed ${({ theme }) => theme.grey};
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   justify-content: flex-end;
@@ -57,24 +56,41 @@ const LearnMore = styled.button`
   background-color: rgba(0, 0, 0, 0.75);
 `
 
+const Image = styled.img`
+  max-height: 100%;
+  max-width: 100%;
+`
+
 const Title = styled.div`
   font-size: 0.75rem;
-  font-weight:700;
+  font-weight: 700;
   font-family: "Open Sans";
   text-align: left;
   margin-top: 15px;
   margin-bottom: 5px;
 `
 
-const Image = styled.img`
-  max-height: 100%;
-  max-width: 100%;
+const Row = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
 `
-
 const Price = styled.div`
   font-size: 0.75rem;
   text-align: left;
   font-family: "Open Sans";
+`
+
+const Label = styled.label`
+  color: ${({ theme }) => theme.darkGrey};
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.75rem;
+`
+const Quantity = styled.select`
+  margin-top: 5px;
 `
 const AddToCart = styled.button`
   cursor: pointer;
@@ -85,25 +101,6 @@ const AddToCart = styled.button`
   margin-top: 10px;
   padding: 10px 5px;
   border-radius: 5px;
-`
-
-
-
-const Row = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: flex-end;
-`
-const Label = styled.label`
-  color: ${({ theme }) => theme.darkGrey};
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  font-size: 0.75rem;
-`
-const Quantity = styled.select`
-  margin-top: 5px;
 `
 
 const ProductTemplate = ({ data }) => {
@@ -117,14 +114,13 @@ const ProductTemplate = ({ data }) => {
     store: { client, adding },
   } = useContext(StoreContext)
 
-
   const handleQuantityChange = ({ target }) => {
     setQuantity(target.value)
   }
 
   const handleAddToCart = () => {
     addToCart(shopifyId, quantity)
-    setQuantity(1);
+    setQuantity(1)
   }
 
   return (
