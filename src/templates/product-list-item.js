@@ -90,11 +90,11 @@ const Button = styled.button`
 
 const ProductTemplate = ({data})=>{
   const {handle, images, priceRange, title} = data.node;
-  //  const price = Intl.NumberFormat(undefined, {
-  //    currency: minVariantPrice.currencyCode,
-  //    minimumFractionDigits: 2,
-  //    style: "currency",
-  //  }).format(variant.price)
+   const price = Intl.NumberFormat(undefined, {
+     currency: "USD",
+     minimumFractionDigits: 2,
+     style: "currency",
+   }).format(priceRange.maxVariantPrice.amount);
   const handleAddToCart = ()=>{
 
   }
@@ -107,7 +107,7 @@ const ProductTemplate = ({data})=>{
         <Image src={images[0].originalSrc} />
       </Wrapper>
       <Title>{title}</Title>
-      <Price>{`$${priceRange.maxVariantPrice.amount}`}</Price>
+      <Price>{`${price}`}</Price>
       <Button onClick={handleAddToCart}>Add to Cart</Button>
       {/* {description} */}
     </Container>
