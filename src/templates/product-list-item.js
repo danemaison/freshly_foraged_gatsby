@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
+import StoreContext from "../provider/context"
 
 const Container = styled.div`
   display: flex;
@@ -90,13 +91,19 @@ const Button = styled.button`
 
 const ProductTemplate = ({data})=>{
   const {handle, images, priceRange, title} = data.node;
+
+  const {
+    addVariantToCart,
+    store: { client, adding },
+  } = useContext(StoreContext)
+
    const price = Intl.NumberFormat(undefined, {
      currency: "USD",
      minimumFractionDigits: 2,
      style: "currency",
    }).format(priceRange.maxVariantPrice.amount);
   const handleAddToCart = ()=>{
-
+    // addVariantToCart();
   }
   return (
     <Container>

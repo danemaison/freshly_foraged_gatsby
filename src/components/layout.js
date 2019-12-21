@@ -5,9 +5,11 @@ import { useStaticQuery, graphql } from "gatsby"
 import { ThemeProvider } from "styled-components"
 import { theme } from "../styling/theme"
 import { GlobalStyle } from "../styling/global-style"
+import ContextProvider from "../provider/context-provider";
 import Nav from "./navigation/navbar"
 import Footer from "./footer"
 import { useWindowSize } from "../utils/window-size"
+
 
 const Main = styled.main`
   padding-top: 60px;
@@ -28,11 +30,13 @@ const Layout = ({ children }) => {
   useWindowSize();
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
-      <Nav />
-      <Main>{children}</Main>
-      <Footer />
+      <ContextProvider>
+        <GlobalStyle />
+        {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
+        <Nav />
+        <Main>{children}</Main>
+        <Footer />
+      </ContextProvider>
     </ThemeProvider>
   )
 }
