@@ -4,6 +4,9 @@ import Img from "gatsby-image"
 import { Link } from "gatsby"
 import StoreContext from "../provider/context"
 import { formatPrice } from "../utils/format-price"
+import BackgroundImage from "gatsby-background-image"
+
+
 
 const Container = styled.div`
   display: flex;
@@ -19,10 +22,9 @@ const Container = styled.div`
   padding: 15px;
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled(BackgroundImage)`
   width: 100%;
   height: 100%;
-  background-image: url(${({ background }) => background});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -104,29 +106,41 @@ const AddToCart = styled.button`
   border-radius: 5px;
 `
 
-const ProductTemplate = ({ data }) => {
-  const { handle, images, priceRange, title, shopifyId } = data.node
-  const price = formatPrice(priceRange.maxVariantPrice.amount)
+const ProductTemplate = ({ product }) => {
+  const {
+    title,
+    handle,
+    images,
+    variants: [initialVariant],
+    priceRange: { minVariantPrice },
+  } = product
 
+  const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
-
   const {
     addToCart,
     store: { client, adding },
   } = useContext(StoreContext)
+
+  const productVariant =
+    client.product.helpers.variantForOptions(product, variant) || variant
+
+  const price = formatPrice(minVariantPrice.amount, minVariantPrice.currencyCode);
 
   const handleQuantityChange = ({ target }) => {
     setQuantity(target.value)
   }
 
   const handleAddToCart = () => {
-    addToCart(shopifyId, quantity)
+    addToCart(productVariant.shopifyId, quantity)
     setQuantity(1)
   }
 
   return (
     <Container>
-      <Wrapper background={images[0].originalSrc}>
+      <Wrapper
+        fluid={images[0].localFile.childImageSharp.fluid}
+      >
         <Overlay to={`/product/${handle}`}>
           <LearnMore>Learn More</LearnMore>
         </Overlay>
@@ -149,7 +163,6 @@ const ProductTemplate = ({ data }) => {
         </Label>
       </Row>
       <AddToCart onClick={handleAddToCart}>Add to Cart</AddToCart>
-      {/* {description} */}
     </Container>
   )
 }

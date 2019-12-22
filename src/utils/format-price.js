@@ -1,8 +1,8 @@
 
-export const formatPrice = unformattedPrice => {
+export const formatPrice = (amount, currencyCode) => {
   return Intl.NumberFormat(undefined, {
-    currency: "USD",
+    currency: currencyCode,
     minimumFractionDigits: 2,
     style: "currency",
-  }).format(unformattedPrice);
+  }).format(amount);
 }

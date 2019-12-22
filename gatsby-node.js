@@ -3,27 +3,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   // Query for all products in Shopify
   const result = await graphql(`
-    query {
-      allShopifyProduct(sort: { fields: [title] }) {
+    {
+      allShopifyProduct {
         edges {
           node {
-            title
-            images {
-              originalSrc
-            }
             handle
-            shopifyId
-            description
-            descriptionHtml
-            availableForSale
-            priceRange {
-              maxVariantPrice {
-                amount
-              }
-              minVariantPrice {
-                amount
-              }
-            }
           }
         }
       }
@@ -37,7 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/product/${node.handle}`,
       component: path.resolve(`./src/templates/product-page.js`),
       context: {
-        product: node,
+        handle: node.handle,
       },
     })
   })
