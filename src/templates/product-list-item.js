@@ -19,14 +19,13 @@ const Container = styled.div`
   padding: 15px;
 `
 
-
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url(${({background})=>background});
-  background-size:contain;
-  background-repeat:no-repeat;
-  background-position:center;
+  background-image: url(${({ background }) => background});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   position: relative;
   text-align: center;
 `
@@ -62,11 +61,6 @@ const LearnMore = styled.button`
   background-color: rgba(0, 0, 0, 0.75);
 `
 
-const Image = styled.img`
-  max-height: 100%;
-  max-width: 100%;
-`
-
 const Title = styled.div`
   font-size: 0.75rem;
   font-weight: 700;
@@ -78,6 +72,7 @@ const Title = styled.div`
 
 const Row = styled.div`
   display: flex;
+  height:60px;
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
@@ -135,7 +130,6 @@ const ProductTemplate = ({ data }) => {
         <Overlay to={`/product/${handle}`}>
           <LearnMore>Learn More</LearnMore>
         </Overlay>
-        {/* <Image src={images[0].originalSrc} /> */}
       </Wrapper>
       <Title>{title}</Title>
       <Row>

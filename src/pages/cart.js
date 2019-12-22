@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import {Container, Header} from '../components/ui/elements';
 import styled from 'styled-components';
+
 const CartContainer = styled(Container)`
   padding-top:25px;
 `
