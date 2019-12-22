@@ -11,6 +11,7 @@ const Container = styled.div`
   border: 1px dashed ${({ theme }) => theme.grey};
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
+
   justify-content: flex-end;
   margin-top: 15px;
   width: 250px;
@@ -18,9 +19,14 @@ const Container = styled.div`
   padding: 15px;
 `
 
+
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  background-image: url(${({background})=>background});
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
   position: relative;
   text-align: center;
 `
@@ -125,11 +131,11 @@ const ProductTemplate = ({ data }) => {
 
   return (
     <Container>
-      <Wrapper>
+      <Wrapper background={images[0].originalSrc}>
         <Overlay to={`/product/${handle}`}>
           <LearnMore>Learn More</LearnMore>
         </Overlay>
-        <Image src={images[0].originalSrc} />
+        {/* <Image src={images[0].originalSrc} /> */}
       </Wrapper>
       <Title>{title}</Title>
       <Row>
