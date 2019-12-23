@@ -118,7 +118,7 @@ const Cart = () => {
   return (
     <>
       <BackRow>
-        <BackToShopWrapper>
+        <BackToShopWrapper to="/shop">
           <BackArrow icon={faArrowLeft}/>
           {" "}
           Back to shop
