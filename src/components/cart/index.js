@@ -32,7 +32,8 @@ const Row = styled.div`
 `
 
 const Subtotal = styled.div`
-  margin-bottom:2px;
+  font-family: "Open Sans";
+  margin-bottom: 7px;
 `
 const Spinner = styled.img`
   margin-top: 60px;
@@ -50,6 +51,10 @@ const EmptyCart = styled.div`
   font-size: 3rem;
 `
 
+const ItemCount = styled.span`
+  font-weight: 600;
+  font-family: "Open Sans";
+`
 const Cart = () => {
   const {
     store: { checkout },
@@ -73,7 +78,14 @@ const Cart = () => {
       ))}
       <Row>
         <Subtotal>
-          Subtotal ({checkout.lineItems.reduce((acc, item)=> acc += item.quantity, 0)} items): <Price>${checkout.subtotalPrice}</Price>
+          Subtotal (
+          <ItemCount>
+            {checkout.lineItems.reduce(
+              (acc, item) => (acc += item.quantity),
+              0
+            )}
+          </ItemCount>{" "}
+          items): <Price>${checkout.subtotalPrice}</Price>
         </Subtotal>
         <CheckoutButton onClick={handleCheckout}>Checkout</CheckoutButton>
       </Row>
