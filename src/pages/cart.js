@@ -14,7 +14,7 @@ const CartPage = ()=>{
     <Layout>
       <SEO title="Cart" />
       <CartContainer>
-        <Header>Items in Your Cart</Header>
+        <Header>Shopping Cart</Header>
         <Cart></Cart>
       </CartContainer>
     </Layout>
