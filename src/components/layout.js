@@ -1,4 +1,6 @@
 import React, {useEffect} from "react"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import { config } from "@fortawesome/fontawesome-svg-core"
 import styled from "styled-components"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
@@ -9,8 +11,8 @@ import ContextProvider from "../provider/context-provider";
 import Nav from "./navigation/navbar"
 import Footer from "./footer"
 import { useWindowSize } from "../utils/window-size"
-import { config } from "@fortawesome/fontawesome-svg-core"
 config.autoAddCss = false
+
 
 const Main = styled.main`
   padding-top: 60px;
