@@ -106,7 +106,7 @@ const AddToCart = styled.button`
   border-radius: 5px;
 `
 
-const ProductTemplate = ({ product }) => {
+const ProductTemplate = ({ product, triggerNotification }) => {
   const {
     title,
     handle,
@@ -132,6 +132,7 @@ const ProductTemplate = ({ product }) => {
   }
 
   const handleAddToCart = () => {
+    triggerNotification(`${quantity} ${title} added to cart`);
     addToCart(productVariant.shopifyId, quantity)
     setQuantity(1)
   }

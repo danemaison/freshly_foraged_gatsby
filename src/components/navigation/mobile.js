@@ -1,6 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import StoreContext from '../../provider/context';
 
 const Wrapper = styled.div`
   cursor: pointer;
@@ -72,6 +75,42 @@ const StyledLink = styled(Link)`
   }
 `
 
+const Cart = styled(FontAwesomeIcon)`
+  position: fixed;
+
+  font-size: 1.7rem;
+  color: ${({ theme }) => theme.primary};
+
+
+  @media ${({ theme }) => theme.mediaQueries.small} {
+    display: none;
+  }
+`
+
+const CartLink = styled(Link)`
+  position: fixed;
+  right: 86px;
+  top: 17px;
+  width:1.9rem;
+  height:1.7rem;
+`
+
+const CartAmount = styled.div`
+  font-family:"Open Sans";
+  position:absolute;
+  z-index:100;
+  font-size:.8rem;
+  top:-10px;
+  right:-15px;
+  border-radius:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:22px;
+  height:22px;
+  background-color:${({theme})=>theme.warning};
+  color:white;
+`
 const Hamburger = ({ toggleNav, open }) => {
   return (
     <Wrapper open={open} onClick={toggleNav}>
@@ -87,8 +126,25 @@ export default function() {
   function toggleNav() {
     setOpen(!open)
   }
+  const {
+    store : {
+      checkout
+    }
+  } = useContext(StoreContext)
+
+  const getCartAmount = ()=>{
+    let amt = checkout.lineItems.reduce((acc, item)=> acc + item.quantity, 0)
+    if(amt){
+      return amt
+    }
+  }
   return (
     <>
+      <CartLink to="/cart">
+        {getCartAmount() &&
+        <CartAmount>{getCartAmount()}</CartAmount>}
+        <Cart icon={faShoppingCart} />
+      </CartLink>
       <Hamburger open={open} toggleNav={toggleNav} />
       <Nav open={open}>
         <StyledLink onClick={toggleNav} to="/">

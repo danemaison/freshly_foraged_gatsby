@@ -12,10 +12,14 @@ const ProductPageContainer = styled(Container)`
 `
 
 const Img = styled(Image)`
-  max-width: 300px;
+  max-width: 100%;
+  max-height:100%;
+  object-fit:contain;
 `
 const ImageWrapper = styled.div`
   text-align: center;
+  height:300px;
+  width:300px;
 `
 
 const Description = styled.div`
@@ -24,7 +28,7 @@ const Description = styled.div`
   }
 `
 const Row = styled.div`
-  padding-top: 25px;
+  padding-top: 30px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -39,6 +43,17 @@ const Row = styled.div`
   }
 `
 
+const Col = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+const ImageCol = styled(Col)`
+  margin-top:15px;
+  align-self:flex-start;
+`
+
 const ProductPage = ({ data }) => {
   const { title, images, descriptionHtml } = data.shopifyProduct
   const product = data.shopifyProduct
@@ -47,9 +62,14 @@ const ProductPage = ({ data }) => {
       <ProductPageContainer>
         <Header>{title}</Header>
         <Row>
-          <ImageWrapper>
-            <Img fluid={images[0].localFile.childImageSharp.fluid} />
-          </ImageWrapper>
+          <ImageCol>
+            <ImageWrapper>
+              <Img
+                fluid={images[0].localFile.childImageSharp.fluid}
+                imgStyle={{ objectFit: "contain" }}
+              />
+            </ImageWrapper>
+          </ImageCol>
           <Description dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
         </Row>
         <Row>

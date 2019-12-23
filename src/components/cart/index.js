@@ -3,6 +3,7 @@ import styled from "styled-components"
 import StoreContext from "../../provider/context"
 import LineItem from "./line-item"
 import spinner from "../../images/spinner.gif"
+import { Link } from "gatsby"
 
 const CheckoutButton = styled.button`
   border:none;
@@ -13,7 +14,7 @@ const CheckoutButton = styled.button`
   font-size:1.2rem;
   padding: 5px 15px;
   text-shadow: 1px 1px 1px rgba(0,0,0,.2);
-  transition:.5s ease;
+  transition:.2s ease;
   :hover{
     cursor:pointer;
     box-shadow: 1px 1px 1px rgba(0,0,0,.1);
@@ -48,7 +49,24 @@ const Price = styled.span`
 `
 const EmptyCart = styled.div`
   margin-top: 60px;
-  font-size: 3rem;
+  font-size: 1.5rem;
+`
+const GoBack = styled(Link)`
+  text-decoration:none;
+  border: none;
+  background-color: ${({ theme }) => theme.primary};
+  color: white;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 5px 15px;
+  margin-top:15px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.2s ease;
+  :hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  }
 `
 
 const ItemCount = styled.span`
@@ -65,10 +83,16 @@ const Cart = () => {
     window.open(checkout.webUrl)
   }
 
+
   if (!checkout.lineItems.type) {
     return <Spinner src={spinner} />
   } else if (!checkout.lineItems.length) {
-    return <EmptyCart>There are no items in your cart!</EmptyCart>
+    return (
+      <>
+        <EmptyCart>There are no items in your cart!</EmptyCart>
+        <GoBack to="/shop">Shop</GoBack>
+      </>
+    )
   }
 
   return (

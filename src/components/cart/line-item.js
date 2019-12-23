@@ -86,9 +86,10 @@ const ImageWrapper = styled(Child)``
 
 
 const LineItem = ({ item }) => {
-  console.log(item);
+
   const {
     removeLineItem,
+    updateLineItem,
     store: { client, checkout },
   } = useContext(StoreContext)
 
@@ -99,6 +100,7 @@ const LineItem = ({ item }) => {
   const [quantity, setQuantity ] = useState(item.quantity);
   const handleQuantityChange = ({target})=>{
     setQuantity(target.value);
+    updateLineItem(client, checkout.id, item.id, target.value);
   }
 
   const handleRemoveItem = ()=>{

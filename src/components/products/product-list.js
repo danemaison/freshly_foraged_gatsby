@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import ProductTemplate from "../../templates/product-list-item"
+import Notification from '../notification';
 
 const Grid = styled.div`
   margin-top: 25px;
@@ -67,13 +68,22 @@ const ProductList = () => {
       }
     }
   `)
-
+  const [notification, setNotification] = useState(null)
+  const triggerNotification = notification =>{
+    setNotification(notification)
+  }
+  const clearNotification = ()=>{
+    setNotification(null);
+  }
   return (
-    <Grid>
-      {data.allShopifyProduct.edges.map(data => (
-        <ProductTemplate key={data.node.shopifyId} product={data.node} />
-      ))}
-    </Grid>
+    <>
+      <Notification notificationText={notification} clearNotification={clearNotification}/>
+      <Grid>
+        {data.allShopifyProduct.edges.map(data => (
+          <ProductTemplate triggerNotification={triggerNotification} key={data.node.shopifyId} product={data.node} />
+        ))}
+      </Grid>
+    </>
   )
 }
 
