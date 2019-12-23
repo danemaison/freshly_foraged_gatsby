@@ -15,7 +15,7 @@ const Grid = styled.div`
 const ProductList = () => {
   const data = useStaticQuery(graphql`
     {
-      allShopifyProduct(sort: { fields: [title] }) {
+      allShopifyProduct(sort: { fields: [title], order: DESC }) {
         edges {
           node {
             id

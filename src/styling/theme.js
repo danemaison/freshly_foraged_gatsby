@@ -1,6 +1,7 @@
 export const theme = {
   primary: "#a9d7ac",
   primaryLight: '#d0e9d2',
+  warning: '#92140C',
   darkGrey: '#A9A9A9',
   grey: '#dbdbdb',
   mediaQueries: {

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback } from "react"
-import StoreContext from "../provider/context.js"
+import StoreContext from "../provider/context"
 import styled from "styled-components"
 
 const AddToCart = styled.button``
