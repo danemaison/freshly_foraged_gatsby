@@ -91,25 +91,31 @@ const CartLink = styled(Link)`
   position: fixed;
   right: 86px;
   top: 17px;
-  width:1.9rem;
-  height:1.7rem;
+  width: 1.9rem;
+  height: 1.7rem;
+  @media ${({ theme }) => theme.mediaQueries.small} {
+    display: none;
+  }
 `
 
 const CartAmount = styled.div`
-  font-family:"Open Sans";
-  position:absolute;
-  z-index:100;
-  font-size:.8rem;
-  top:-10px;
-  right:-15px;
-  border-radius:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:22px;
-  height:22px;
-  background-color:${({theme})=>theme.warning};
-  color:white;
+  font-family: "Open Sans";
+  position: absolute;
+  z-index: 100;
+  font-size: 0.8rem;
+  top: -10px;
+  right: -15px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  background-color: ${({ theme }) => theme.warning};
+  color: white;
+  @media ${({ theme }) => theme.mediaQueries.small} {
+    display: none;
+  }
 `
 const Hamburger = ({ toggleNav, open }) => {
   return (

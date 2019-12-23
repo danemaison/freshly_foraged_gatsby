@@ -8,6 +8,10 @@ import Img from 'gatsby-image';
 const Wrapper = styled.div`
   margin-top: 60px;
   position: relative;
+  &:last-child > *{
+    top:-15%;
+
+  }
   @media ${({ theme }) => theme.mediaQueries.medium} {
     padding: 0 5rem;
   }
@@ -20,10 +24,10 @@ const Wrapper = styled.div`
 `
 const Image = styled(Img)`
   position:absolute;
-  top:-50%;
+  top:-40%;
   left:${({index})=>index % 2 === 0 ? 0 : "100%"};
   transform: ${({index})=>index %2 ===0 ? 0 : "translateX(-100%)"};
-  opacity: .3;
+  opacity: .2;
 `
 const BodyHeading = styled.div`
   margin-bottom: 16px;
