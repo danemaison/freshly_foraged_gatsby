@@ -79,9 +79,10 @@ const ItemCount = styled.span`
   font-family: "Open Sans";
 `
 const BackRow = styled(Row)`
-font-size:.8rem;
+  font-size:.8rem;
   margin:0;
-  padding:8px 0;
+  padding-top:16px;
+  padding-bottom:0px;
   justify-content:flex-start;
   align-items:flex-start;
 `

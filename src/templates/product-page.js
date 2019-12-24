@@ -54,8 +54,29 @@ const ImageCol = styled(Col)`
   align-self:flex-start;
 `
 
+const AltImagesWrapper = styled.div`
+  display:flex;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+  width:100%;
+  align-items:center;
+`
+const AltImgWrapper = styled.div`
+  margin: 10px 10px 0 0;
+  width: 125px;
+  height: 125px;
+  border:1px solid ${({theme})=>theme.grey};
+  /* border-radius:5px; */
+  /* box-shadow: 0 0 2px rgba(0,0,0,.25); */
+`
+const AltImg = styled(Image)`
+  max-width:100%;
+  max-height:100%;
+`
+
 const ProductPage = ({ data }) => {
   const { title, images, descriptionHtml } = data.shopifyProduct
+  console.log(images);
   const product = data.shopifyProduct
   return (
     <Layout>
@@ -69,6 +90,13 @@ const ProductPage = ({ data }) => {
                 imgStyle={{ objectFit: "contain" }}
               />
             </ImageWrapper>
+            <AltImagesWrapper>
+              {images.map(img => (
+                <AltImgWrapper>
+                  <AltImg imgStyle={{objectFit: "contain"}} fluid={img.localFile.childImageSharp.fluid} />
+                </AltImgWrapper>
+              ))}
+            </AltImagesWrapper>
           </ImageCol>
           <Description dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
         </Row>

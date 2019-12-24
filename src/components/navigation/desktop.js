@@ -73,7 +73,7 @@ export default ({ location }) => {
   }, [pathname])
   return (
     <Links>
-      <StyledLink to="/">About</StyledLink>
+      <StyledLink to="/about">About</StyledLink>
       <StyledLink to="/">Contact</StyledLink>
       {path.includes("/shop") || path.includes("/product") ? (
         <ShopLink to="/cart">
