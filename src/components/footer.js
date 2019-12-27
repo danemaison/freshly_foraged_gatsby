@@ -41,7 +41,11 @@ const Footer = ()=>{
         &copy; Freshly Foraged &nbsp;
         {`${new Date().getFullYear()}`}
       </div>
-      <Instagram href="https://www.instagram.com/freshly_foraged_/" target="_blank">
+      <Instagram
+        rel="noopener"
+        href="https://www.instagram.com/freshly_foraged_/"
+        target="_blank"
+      >
         <FontAwesomeIcon icon={faInstagram} />
       </Instagram>
     </Container>

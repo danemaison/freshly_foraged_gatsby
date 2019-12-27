@@ -72,7 +72,8 @@ const ImageTemplate = ({data})=>{
       <Overlay />
       <Header>{header}</Header>
       <SubHeader>{subheader}</SubHeader>
-      <Button to={linkTo}>{linkName}</Button>
+      {/* <Button to={linkTo}>{linkName}</Button> */}
+      <Button to="/">{linkName}</Button>
     </Container>
   )
 }
