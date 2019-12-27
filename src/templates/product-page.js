@@ -1,14 +1,15 @@
-import React, { useContext } from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout"
 import { Container, Header } from "../components/ui/elements"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import StoreContext from "../provider/context"
-import ProductForm from './product-page-form';
+import ProductForm from "./product-page-form"
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
+import Notification from '../components/notification';
 
 const ProductPageContainer = styled(Container)`
   padding-top: 25px;
@@ -16,13 +17,13 @@ const ProductPageContainer = styled(Container)`
 
 const Img = styled(Image)`
   max-width: 100%;
-  max-height:100%;
-  object-fit:contain;
+  max-height: 100%;
+  object-fit: contain;
 `
 const ImageWrapper = styled.div`
   text-align: center;
-  height:300px;
-  width:300px;
+  height: 300px;
+  width: 300px;
 `
 
 const Description = styled.div`
@@ -59,10 +60,15 @@ const Col = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+  @media ${({ theme }) => theme.mediaQueries.small} {
+    :first-child {
+      padding-right: 24px;
+    }
+  }
 `
 const ImageCol = styled(Col)`
-align-items:center;
-width:100%;
+  align-items: center;
+  width: 100%;
   margin-top: 15px;
   align-self: flex-start;
   @media ${({ theme }) => theme.mediaQueries.medium} {
@@ -82,16 +88,17 @@ const AltImagesWrapper = styled.div`
   }
 `
 const AltImgWrapper = styled.div`
+cursor: pointer;
   margin: 10px 10px 0 0;
   width: 75px;
   height: 75px;
-  /* border:1px solid ${({theme})=>theme.grey}; */
+  /* border:1px solid ${({ theme }) => theme.grey}; */
   /* border-radius:5px; */
   box-shadow: 0 0 2px rgba(0,0,0,.2);
 `
 const AltImg = styled(Image)`
-  max-width:100%;
-  max-height:100%;
+  max-width: 100%;
+  max-height: 100%;
 `
 
 const BackRow = styled(Row)`
@@ -108,12 +115,26 @@ const BackToShopWrapper = styled(Link)`
 `
 const BackArrow = styled(FontAwesomeIcon)``
 
+
+
 const ProductPage = ({ data }) => {
   const { title, images, descriptionHtml } = data.shopifyProduct
-  console.log(images);
   const product = data.shopifyProduct
+
+  const [notification, setNotification] = useState(null)
+  const [activeImage, setActiveImage] = useState(0);
+  const triggerNotification = notification => {
+    setNotification(notification)
+  }
+  const clearNotification = () => {
+    setNotification(null)
+  }
   return (
     <Layout>
+      <Notification
+        notificationText={notification}
+        clearNotification={clearNotification}
+      />
       <ProductPageContainer>
         <Header>{title}</Header>
         <BackRow>
@@ -126,13 +147,16 @@ const ProductPage = ({ data }) => {
             <ImageCol>
               <ImageWrapper>
                 <Img
-                  fluid={images[0].localFile.childImageSharp.fluid}
+                  fluid={images[activeImage].localFile.childImageSharp.fluid}
                   imgStyle={{ objectFit: "contain" }}
                 />
               </ImageWrapper>
               <AltImagesWrapper>
-                {images.map(img => (
-                  <AltImgWrapper>
+                {images.map((img, index) => (
+                  <AltImgWrapper
+                    key={index}
+                    onClick={()=>setActiveImage(index)}
+                  >
                     <AltImg
                       imgStyle={{ objectFit: "contain" }}
                       fluid={img.localFile.childImageSharp.fluid}
@@ -141,7 +165,10 @@ const ProductPage = ({ data }) => {
                 ))}
               </AltImagesWrapper>
             </ImageCol>
-            <ProductForm product={product} />
+            <ProductForm
+              triggerNotification={triggerNotification}
+              product={product}
+            />
           </Col>
           <Description dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
         </Row>

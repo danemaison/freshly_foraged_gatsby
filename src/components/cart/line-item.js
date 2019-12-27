@@ -69,13 +69,20 @@ const Price = styled.span`
 const RemoveButton = styled(FontAwesomeIcon)`
   color: ${({ theme }) => theme.warning};
   font-size: 1.2rem;
-  position:absolute;
-  top:5px;
-  right:5px;
-  :hover {
-    cursor: pointer;
+`
+const RemoveButtonWrapper = styled.span`
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  &::before {
+    content: "Remove item ";
+    font-size: 0.5rem;
+    color: ${({ theme }) => theme.warning};
+    font-weight: 700;
+    position: relative;
+    top: -3px;
   }
-
 `
 
 
@@ -109,7 +116,9 @@ const LineItem = ({ item }) => {
 
   return (
     <Row>
-      <RemoveButton onClick={handleRemoveItem} icon={faTimesCircle} />
+      <RemoveButtonWrapper onClick={handleRemoveItem}>
+        <RemoveButton icon={faTimesCircle} />
+      </RemoveButtonWrapper>
       {variantImage && <ImageWrapper>{variantImage}</ImageWrapper>}
       <Title>{item.title}</Title>
       <Col>
