@@ -9,7 +9,7 @@ import ProductForm from "./product-page-form"
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
-import Notification from '../components/notification';
+import Notification from "../components/notification"
 
 const ProductPageContainer = styled(Container)`
   padding-top: 25px;
@@ -115,14 +115,12 @@ const BackToShopWrapper = styled(Link)`
 `
 const BackArrow = styled(FontAwesomeIcon)``
 
-
-
 const ProductPage = ({ data }) => {
   const { title, images, descriptionHtml } = data.shopifyProduct
   const product = data.shopifyProduct
 
   const [notification, setNotification] = useState(null)
-  const [activeImage, setActiveImage] = useState(0);
+  const [activeImage, setActiveImage] = useState(0)
   const triggerNotification = notification => {
     setNotification(notification)
   }
@@ -155,7 +153,7 @@ const ProductPage = ({ data }) => {
                 {images.map((img, index) => (
                   <AltImgWrapper
                     key={index}
-                    onClick={()=>setActiveImage(index)}
+                    onClick={() => setActiveImage(index)}
                   >
                     <AltImg
                       imgStyle={{ objectFit: "contain" }}

@@ -36,6 +36,7 @@ module.exports = {
         accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
       },
     },
+
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     {
@@ -54,12 +55,13 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#FFFF`,
+        background_color: `#ffffff`,
         theme_color: `#a9d7ac`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-netlify`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
