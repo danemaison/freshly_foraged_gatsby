@@ -69,6 +69,7 @@ const Carousel = () => {
     arrows:false,
     autoplay: false,
     autoplaySpeed: 2000,
+    swipeToSlide: true,
   }
   return (
     <CarouselContainer {...settings}>
