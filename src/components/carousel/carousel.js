@@ -8,12 +8,14 @@ import { useWindowSize } from '../../utils/window-size';
 
 const CarouselContainer = styled.div`
   overflow-x: hidden;
-  height: 82vh;
-  height: calc(var(--vh, 1vh) * 82);
+  height: 75vh;
   background-color: rgba(0, 0, 0, 0.25);
   position: relative;
   display: flex;
   justify-content: center;
+  @media ${({ theme }) => theme.mediaQueries.small} {
+    height: 82vh;
+  }
 `
 const Dots = styled.div`
   position: absolute;
