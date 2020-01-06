@@ -5,25 +5,32 @@ import {Link} from 'gatsby';
 import leaf from "../images/leaf-button.png";
 
 const Container = styled(BackgroundImage)`
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:flex-start;
-  width:100vw;
-  height:100%;
-  padding-left:30px;
-  position:relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100vw;
+  height: 100%;
+  padding-left: 30px;
+  position: relative;
+  @media ${({ theme }) => theme.mediaQueries.medium} {
+    align-items: center;
+  }
 `
 
 const Header = styled.div`
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   margin-top: -30px;
   color: white;
-  font-weight:700;
+  font-weight: 700;
   font-size: 2.3rem;
   z-index: 2;
-  @media ${({theme})=>theme.mediaQueries.small}{
-    font-size:3rem;
+  @media ${({ theme }) => theme.mediaQueries.small} {
+    font-size: 3rem;
+  }
+  @media ${({ theme }) => theme.mediaQueries.medium} {
+    font-size: 4rem;
   }
 `
 const SubHeader = styled.div`
@@ -36,6 +43,9 @@ const SubHeader = styled.div`
   @media ${({ theme }) => theme.mediaQueries.small} {
     font-size: 4.5rem;
   }
+  @media ${({ theme }) => theme.mediaQueries.medium} {
+    font-size: 5.5rem;
+  }
 `
 const Button = styled(Link)`
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
@@ -47,13 +57,18 @@ const Button = styled(Link)`
   left: 16px;
   top: 150px;
   font-size: 1rem;
-  border-radius: 15px;
+  border-radius: 55px;
   padding: 8px 20px;
   background-color: ${({ theme }) => theme.primary};
   background-image: url(${leaf});
   background-position-y: -15px;
   background-size: 100px;
   color: white;
+  @media ${({ theme }) => theme.mediaQueries.medium} {
+    font-size: 1.5rem;
+    background-size: 150px;
+    background-position-y: -35px;
+  }
 `
 const Overlay = styled.div`
   position:absolute;
@@ -62,7 +77,7 @@ const Overlay = styled.div`
   width:100%;
   height:100%;
   z-index: -1;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,10,35,.55);
 `
 
 const ImageTemplate = ({data})=>{
@@ -72,8 +87,8 @@ const ImageTemplate = ({data})=>{
       <Overlay />
       <Header>{header}</Header>
       <SubHeader>{subheader}</SubHeader>
-      {/* <Button to={linkTo}>{linkName}</Button> */}
-      <Button to="/">{linkName}</Button>
+      <Button to={linkTo}>{linkName}</Button>
+      {/* <Button to="/">{linkName}</Button> */}
     </Container>
   )
 }

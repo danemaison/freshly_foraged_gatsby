@@ -147,8 +147,7 @@ export default function() {
   return (
     <>
       <CartLink to="/cart">
-        {getCartAmount() &&
-        <CartAmount>{getCartAmount()}</CartAmount>}
+        {getCartAmount() && <CartAmount>{getCartAmount()}</CartAmount>}
         <Cart icon={faShoppingCart} />
       </CartLink>
       <Hamburger open={open} toggleNav={toggleNav} />
@@ -161,6 +160,9 @@ export default function() {
         </StyledLink>
         <StyledLink onClick={toggleNav} to="/about">
           About
+        </StyledLink>
+        <StyledLink onClick={toggleNav} to="/about">
+          FAQ
         </StyledLink>
         <StyledLink onClick={toggleNav} to="/contact">
           Contact

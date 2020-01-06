@@ -1,7 +1,7 @@
 ---
-header: Herbal Wellness
-subheader: Revolutionized
+header: Freshly Foraged
+subheader: What is CBD?
 image: carousel-3.jpg
-linkTo: /learn-more
-linkName: Learn More
+linkTo: /faq
+linkName: FAQ
 ---

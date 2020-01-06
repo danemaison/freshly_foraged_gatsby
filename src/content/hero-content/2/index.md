@@ -1,7 +1,7 @@
 ---
-header: Herbal Medicine
+header: Herbal Wellness
 subheader: Revolutionized
 image: carousel-1.jpg
-linkTo: /contact
-linkName: Contact Us
+linkTo: /about
+linkName: Learn More
 ---

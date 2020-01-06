@@ -18,7 +18,7 @@ const StyledLink = styled(Link)`
   font-weight: 700;
   text-decoration: none;
   color: black;
-  margin-left: 88px;
+  margin-left: 60px;
   &:first-child {
     margin-left: 0;
   }
@@ -26,7 +26,7 @@ const StyledLink = styled(Link)`
 
 const ShopLink = styled(StyledLink)`
   position: relative;
-  margin-left: 70px;
+  margin-left: 50px;
   background-image: url(${leaf});
   background-position-y: -15px;
   background-size: 80px;
@@ -74,7 +74,8 @@ export default ({ location }) => {
   return (
     <Links>
       <StyledLink to="/about">About</StyledLink>
-      <StyledLink to="/">Contact</StyledLink>
+      <StyledLink to="/faq">FAQ</StyledLink>
+      <StyledLink to="/contact">Contact</StyledLink>
       {path.includes("/shop") || path.includes("/product") ? (
         <ShopLink to="/cart">
           {getCartAmount() && <CartAmount>{getCartAmount()}</CartAmount>}

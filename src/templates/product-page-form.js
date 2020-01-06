@@ -51,6 +51,8 @@ const ProductForm = ({ product, triggerNotification }) => {
     variants: [initialVariant],
     priceRange: { minVariantPrice },
   } = product
+
+  console.log(product);
   const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
   const {

@@ -8,7 +8,7 @@ import { useWindowSize } from '../../utils/window-size';
 
 const CarouselContainer = styled.div`
   overflow-x: hidden;
-  height: 500px;
+  height: 82vh;
   background-color: rgba(0, 0, 0, 0.25);
   position: relative;
   display: flex;
@@ -105,7 +105,7 @@ const Carousel = () => {
 
   useEffect(() => {
     setTranslateX(currentImage * -size.width)
-    timer = setInterval(nextImage, 4000)
+    timer = setInterval(nextImage, 7000)
     return ()=>clearInterval(timer);
   }, [currentImage, size.width])
 

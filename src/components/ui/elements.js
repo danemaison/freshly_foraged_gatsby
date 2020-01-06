@@ -1,4 +1,3 @@
-import React from "react"
 import styled from "styled-components"
 
 export const Container = styled.div`
@@ -13,6 +12,11 @@ export const Container = styled.div`
     padding-bottom: 59px;
   }
 `
+
+export const PageContainer = styled(Container)`
+         padding-top: 25px;
+       `
+
 export const Header = styled.div`
   font-size: 2.5rem;
   position: relative;

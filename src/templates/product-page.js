@@ -20,6 +20,12 @@ const Img = styled(Image)`
   max-height: 100%;
   object-fit: contain;
 `
+
+const ImgBroken = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+`
 const ImageWrapper = styled.div`
   text-align: center;
   height: 300px;
@@ -88,15 +94,17 @@ const AltImagesWrapper = styled.div`
   }
 `
 const AltImgWrapper = styled.div`
-cursor: pointer;
+  cursor: pointer;
   margin: 10px 10px 0 0;
   width: 75px;
   height: 75px;
-  /* border:1px solid ${({ theme }) => theme.grey}; */
-  /* border-radius:5px; */
-  box-shadow: 0 0 2px rgba(0,0,0,.2);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 `
 const AltImg = styled(Image)`
+  max-width: 100%;
+  max-height: 100%;
+`
+const AltImageBroken = styled.img`
   max-width: 100%;
   max-height: 100%;
 `
@@ -144,10 +152,14 @@ const ProductPage = ({ data }) => {
           <Col>
             <ImageCol>
               <ImageWrapper>
-                <Img
-                  fluid={images[activeImage].localFile.childImageSharp.fluid}
-                  imgStyle={{ objectFit: "contain" }}
-                />
+                {images[activeImage].localFile ? (
+                  <Img
+                    fluid={images[activeImage].localFile.childImageSharp.fluid}
+                    imgStyle={{ objectFit: "contain" }}
+                  />
+                ) : (
+                  <ImgBroken src={images[activeImage].originalSrc} />
+                )}
               </ImageWrapper>
               <AltImagesWrapper>
                 {images.map((img, index) => (
@@ -155,10 +167,14 @@ const ProductPage = ({ data }) => {
                     key={index}
                     onClick={() => setActiveImage(index)}
                   >
-                    <AltImg
-                      imgStyle={{ objectFit: "contain" }}
-                      fluid={img.localFile.childImageSharp.fluid}
-                    />
+                    {img.localFile ? (
+                      <AltImg
+                        imgStyle={{ objectFit: "contain" }}
+                        fluid={img.localFile.childImageSharp.fluid}
+                      />
+                    ) : (
+                      <AltImageBroken src={img.originalSrc} />
+                    )}
                   </AltImgWrapper>
                 ))}
               </AltImagesWrapper>

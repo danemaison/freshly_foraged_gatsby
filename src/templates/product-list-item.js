@@ -1,13 +1,20 @@
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
-import Img from "gatsby-image"
 import { Link } from "gatsby"
 import StoreContext from "../provider/context"
 import { formatPrice } from "../utils/format-price"
 import BackgroundImage from "gatsby-background-image"
 
-
-
+const Image = styled.div`
+  width: 100%;
+  height: 100%;
+  background-image: ${({ image }) => `url(${image})`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  text-align: center;
+`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -74,7 +81,7 @@ const Title = styled.div`
 
 const Row = styled.div`
   display: flex;
-  height:60px;
+  height: 60px;
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
@@ -114,6 +121,7 @@ const ProductTemplate = ({ product, triggerNotification }) => {
     variants: [initialVariant],
     priceRange: { minVariantPrice },
   } = product
+  console.log(product)
 
   const [variant, setVariant] = useState({ ...initialVariant })
   const [quantity, setQuantity] = useState(1)
@@ -125,27 +133,36 @@ const ProductTemplate = ({ product, triggerNotification }) => {
   const productVariant =
     client.product.helpers.variantForOptions(product, variant) || variant
 
-  const price = formatPrice(minVariantPrice.amount, minVariantPrice.currencyCode);
+  const price = formatPrice(
+    minVariantPrice.amount,
+    minVariantPrice.currencyCode
+  )
 
   const handleQuantityChange = ({ target }) => {
     setQuantity(target.value)
   }
 
   const handleAddToCart = () => {
-    triggerNotification(`${quantity} ${title} added to cart`);
+    triggerNotification(`${quantity} ${title} added to cart`)
     addToCart(productVariant.shopifyId, quantity)
     setQuantity(1)
   }
 
   return (
     <Container>
-      <Wrapper
-        fluid={images[0].localFile.childImageSharp.fluid}
-      >
-        <Overlay to={`/product/${handle}`}>
-          <LearnMore>Learn More</LearnMore>
-        </Overlay>
-      </Wrapper>
+      {images[0].localFile ? (
+        <Wrapper fluid={images[0].localFile.childImageSharp.fluid}>
+          <Overlay to={`/product/${handle}`}>
+            <LearnMore>Learn More</LearnMore>
+          </Overlay>
+        </Wrapper>
+      ) : (
+        <Image image={images[0].originalSrc}>
+          <Overlay to={`/product/${handle}`}>
+            <LearnMore>Learn More</LearnMore>
+          </Overlay>
+        </Image>
+      )}
       <Title>{title}</Title>
       <Row>
         <Price>{`${price}`}</Price>
