@@ -9,11 +9,13 @@ const Container = styled(BackgroundImage)`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-
   width: 100vw;
-  height: 100%;
+  height: 72vh;
   padding-left: 30px;
   position: relative;
+  @media ${({ theme }) => theme.mediaQueries.small} {
+   height:82vh;
+  }
   @media ${({ theme }) => theme.mediaQueries.medium} {
     align-items: center;
   }
