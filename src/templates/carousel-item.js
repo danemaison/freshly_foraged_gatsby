@@ -77,7 +77,7 @@ const Overlay = styled.div`
   width:100%;
   height:100%;
   z-index: -1;
-  background-color: rgba(0,10,35,.55);
+  background-color: rgba(0,0,0,.55);
 `
 
 const ImageTemplate = ({data})=>{
