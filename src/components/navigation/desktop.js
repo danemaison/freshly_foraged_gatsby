@@ -75,7 +75,6 @@ export default ({ location }) => {
     <Links>
       <StyledLink to="/about">About</StyledLink>
       <StyledLink to="/faq">FAQ</StyledLink>
-      <StyledLink to="/contact">Contact</StyledLink>
       {path.includes("/shop") || path.includes("/product") ? (
         <ShopLink to="/cart">
           {getCartAmount() && <CartAmount>{getCartAmount()}</CartAmount>}

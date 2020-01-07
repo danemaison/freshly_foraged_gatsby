@@ -7,15 +7,15 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 0 16px;
-  padding-top:59px;
-  &:last-child{
+  padding-top: 59px;
+  &:last-child {
     padding-bottom: 59px;
   }
 `
 
 export const PageContainer = styled(Container)`
-         padding-top: 25px;
-       `
+  padding-top: 25px;
+`
 
 export const Header = styled.div`
   font-size: 2.5rem;
@@ -38,4 +38,11 @@ export const Subheader = styled.div`
   margin-top: 15px;
   font-size: 1rem;
   text-align: center;
+`
+
+export const BodyHeading = styled.div`
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Berkshire Swash";
 `

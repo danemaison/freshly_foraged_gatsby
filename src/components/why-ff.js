@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Container, Header, Subheader } from './ui/elements';
+import {Container, Header, Subheader, BodyHeading } from './ui/elements';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
@@ -29,12 +29,7 @@ const Image = styled(Img)`
   transform: ${({index})=>index %2 ===0 ? 0 : "translateX(-100%)"};
   opacity: .2;
 `
-const BodyHeading = styled.div`
-  margin-bottom: 16px;
-  text-align:center;
-  font-size:1.5rem;
-  font-family: "Berkshire Swash";
-`
+
 const BodyDescription = styled.div`
   padding: 0
   font-size:1rem;

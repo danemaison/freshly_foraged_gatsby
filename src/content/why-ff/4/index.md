@@ -1,5 +1,5 @@
 ---
 title: High Bioavailability
-description: Freshly Foraged is proud to promote clean, pure, and organic products without any unnecessary chemicals or additives.
+description: Our products are created through a nanoemulsification process. This method allows for a higher bioavailablity, which equals a more efficient absorption in the body.
 image: flower-2.png
 ---
