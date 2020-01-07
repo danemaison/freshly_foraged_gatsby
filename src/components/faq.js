@@ -20,7 +20,6 @@ const FaqHeader = styled.div`
   z-index: 2;
   padding-top: 16px;
   margin-bottom: 16px;
-  border-bottom:2px dashed black;
 `
 const FaqBodyHeader = styled(BodyHeading)`
   padding: 28px 0 4px 0;

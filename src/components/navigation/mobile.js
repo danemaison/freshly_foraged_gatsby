@@ -161,7 +161,7 @@ export default function() {
         <StyledLink onClick={toggleNav} to="/about">
           About
         </StyledLink>
-        <StyledLink onClick={toggleNav} to="/about">
+        <StyledLink onClick={toggleNav} to="/faq">
           FAQ
         </StyledLink>
       </Nav>
