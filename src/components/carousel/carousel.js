@@ -16,7 +16,7 @@ const CarouselContainer = styled(Slider)`
     button::before {
       color: rgba(255, 255, 255, 1);
       font-size: 18px;
-      opacity: .75;
+      opacity: 0.75;
     }
     li.slick-active button::before {
       opacity: 1;
@@ -66,7 +66,7 @@ const Carousel = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows:false,
+    arrows: false,
     autoplay: false,
     autoplaySpeed: 2000,
     swipeToSlide: true,

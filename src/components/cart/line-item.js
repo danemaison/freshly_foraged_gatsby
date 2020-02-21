@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons"
 
 const Row = styled.div`
-  position:relative;
+  position: relative;
   border: 1px dashed ${({ theme }) => theme.grey};
   display: flex;
   align-items: center;
@@ -18,7 +18,6 @@ const Row = styled.div`
   > div {
     width: 25%;
   }
-
 
   @media ${({ theme }) => theme.mediaQueries.large} {
     width: calc(992px - 32px);
@@ -34,7 +33,7 @@ const Title = styled(Child)`
   justify-content: flex-start;
   text-align: left;
   font-size: 0.8rem;
-  font-weight:700;
+  font-weight: 700;
   font-family: "Open Sans";
 `
 
@@ -62,8 +61,8 @@ const QuantityInput = styled.input`
 `
 
 const Price = styled.span`
-  font-family:"Open Sans";
-  color: ${({theme})=>theme.warning};
+  font-family: "Open Sans";
+  color: ${({ theme }) => theme.warning};
   font-weight: 700;
 `
 const RemoveButton = styled(FontAwesomeIcon)`
@@ -85,15 +84,12 @@ const RemoveButtonWrapper = styled.span`
   }
 `
 
-
 const Image = styled.img`
   height: 100px;
 `
 const ImageWrapper = styled(Child)``
 
-
 const LineItem = ({ item }) => {
-
   const {
     removeLineItem,
     updateLineItem,
@@ -104,13 +100,13 @@ const LineItem = ({ item }) => {
     <Image src={item.variant.image.src} alt={`${item.title} product shot`} />
   ) : null
 
-  const [quantity, setQuantity ] = useState(item.quantity);
-  const handleQuantityChange = ({target})=>{
-    setQuantity(target.value);
-    updateLineItem(client, checkout.id, item.id, target.value);
+  const [quantity, setQuantity] = useState(item.quantity)
+  const handleQuantityChange = ({ target }) => {
+    setQuantity(target.value)
+    updateLineItem(client, checkout.id, item.id, target.value)
   }
 
-  const handleRemoveItem = ()=>{
+  const handleRemoveItem = () => {
     removeLineItem(client, checkout.id, item.id)
   }
 

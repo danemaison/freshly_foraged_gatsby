@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import ProductTemplate from "../../templates/product-list-item"
 import Notification from '../notification';
 
