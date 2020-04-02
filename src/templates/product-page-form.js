@@ -3,21 +3,21 @@ import StoreContext from "../provider/context"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-width:100%;
-display:flex;
-align-items:flex-end;
-flex-direction:column;
-  padding:15px 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 15px 0;
 `
 const AddToCart = styled.button`
-  cursor:pointer;
+  cursor: pointer;
   background-color: ${({ theme }) => theme.primary};
   color: white;
   padding: 5px 12px;
   font-size: 1rem;
   border: transparent;
-  border-radius:5px;
-  box-shadow: 2px 2px 4px rgba(0,0,0,.25);
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
 `
 
@@ -31,16 +31,14 @@ const Label = styled.label`
   margin: 10px 0;
 `
 const Quantity = styled.select`
-  margin-left:5px;
+  margin-left: 5px;
 `
 
-const PriceWrapper = styled.div`
-
-`
+const PriceWrapper = styled.div``
 const Price = styled.span`
   font-family: "Open Sans";
-  font-weight:700;
-  color:${({theme})=>theme.warning};
+  font-weight: 700;
+  color: ${({ theme }) => theme.warning};
 `
 
 const ProductForm = ({ product, triggerNotification }) => {
@@ -81,7 +79,6 @@ const ProductForm = ({ product, triggerNotification }) => {
     checkAvailability(product.shopifyId)
   }, [productVariant, checkAvailability, product.shopifyId])
 
-
   const handleQuantityChange = ({ target }) => {
     setQuantity(target.value)
   }
@@ -115,4 +112,4 @@ const ProductForm = ({ product, triggerNotification }) => {
   )
 }
 
-export default ProductForm;
+export default ProductForm

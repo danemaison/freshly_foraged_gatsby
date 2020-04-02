@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
-import StoreContext from '../../provider/context';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
+import StoreContext from "../../provider/context"
 
 const Wrapper = styled.div`
   cursor: pointer;
@@ -47,7 +47,8 @@ const Nav = styled.nav`
   position: fixed;
   top: 60px;
   transition: 0.25s ease-in-out;
-  left: ${({ open }) => (open ? 0 : "-100%")};
+  left: 0%;
+  transform: ${({ open }) => (open ? "translate(0)" : "translate(-100%)")};
   width: 100%;
   height: calc(100vh - 60px);
   height: calc(var(--vh, 1vh) * 100 - 60px);
@@ -59,7 +60,7 @@ const Nav = styled.nav`
 `
 
 const StyledLink = styled(Link)`
-  border-bottom: 5px solid  white;
+  border-bottom: 5px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +81,6 @@ const Cart = styled(FontAwesomeIcon)`
 
   font-size: 1.7rem;
   color: ${({ theme }) => theme.primary};
-
 
   @media ${({ theme }) => theme.mediaQueries.small} {
     display: none;
@@ -133,14 +133,12 @@ export default function() {
     setOpen(!open)
   }
   const {
-    store : {
-      checkout
-    }
+    store: { checkout },
   } = useContext(StoreContext)
 
-  const getCartAmount = ()=>{
-    let amt = checkout.lineItems.reduce((acc, item)=> acc + item.quantity, 0)
-    if(amt){
+  const getCartAmount = () => {
+    let amt = checkout.lineItems.reduce((acc, item) => acc + item.quantity, 0)
+    if (amt) {
       return amt
     }
   }
