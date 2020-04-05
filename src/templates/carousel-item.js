@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react"
+import styled from "styled-components"
 import BackgroundImage from "gatsby-background-image"
-import {Link} from 'gatsby';
-import leaf from "../images/leaf-button.png";
+import { Link } from "gatsby"
+import leaf from "../images/leaf-button.png"
 
 const Container = styled(BackgroundImage)`
   display: flex;
@@ -14,7 +14,7 @@ const Container = styled(BackgroundImage)`
   padding-left: 30px;
   position: relative;
   @media ${({ theme }) => theme.mediaQueries.small} {
-   height:82vh;
+    height: 82vh;
   }
   @media ${({ theme }) => theme.mediaQueries.medium} {
     align-items: center;
@@ -73,26 +73,31 @@ const Button = styled(Link)`
   }
 `
 const Overlay = styled.div`
-  position:absolute;
-  top:0;
-  left:0%;
-  width:100%;
-  height:100%;
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  height: 100%;
   z-index: -1;
-  background-color: rgba(0,0,0,.55);
+  background-color: rgba(0, 0, 0, 0.55);
 `
 
-const ImageTemplate = ({data})=>{
-  const{header, subheader, image, linkTo, linkName} = data.node.childMarkdownRemark.frontmatter;
+const ImageTemplate = ({ data }) => {
+  const {
+    header,
+    subheader,
+    image,
+    linkTo,
+    linkName,
+  } = data.node.childMarkdownRemark.frontmatter
   return (
     <Container fluid={image.childImageSharp.fluid}>
       <Overlay />
       <Header>{header}</Header>
       <SubHeader>{subheader}</SubHeader>
       <Button to={linkTo}>{linkName}</Button>
-      {/* <Button to="/">{linkName}</Button> */}
     </Container>
   )
 }
 
-export default ImageTemplate;
+export default ImageTemplate
