@@ -7,8 +7,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   html{
     overflow-x:hidden;
+    height:100%;
   }
   body{
+    height:100%;
     position: relative;
     overflow-x: hidden;
     background-color: ${({ theme }) => theme.primary};

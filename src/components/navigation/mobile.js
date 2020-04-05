@@ -131,6 +131,11 @@ export default function() {
   const [open, setOpen] = useState(false)
   function toggleNav() {
     setOpen(!open)
+    if (document.body.style.overflowY === "hidden") {
+      document.body.style.overflowY = "scroll"
+    } else {
+      document.body.style.overflowY = "hidden"
+    }
   }
   const {
     store: { checkout },
