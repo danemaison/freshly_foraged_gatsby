@@ -9,8 +9,7 @@ const Email = styled.a`
   text-decoration: none;
   display: block;
   margin: 15px 0;
-  color: ${({ theme }) => theme.primary};
-
+  color: ${({ theme }) => theme.primaryDark};
   @media ${({ theme }) => theme.mediaQueries.small} {
     font-size: 1.5rem;
   }

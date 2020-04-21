@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faInstagram} from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 const Container = styled.footer`
   width: 100%;
-  height: 60px;
-  padding: 0 16px;
+  padding: 25px 16px;
   color: white;
+  font-size:1.1rem;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -29,7 +30,8 @@ const Container = styled.footer`
 const Instagram = styled.a`
   cursor:pointer;
   color:white;
-  margin-top:5px;
+  margin-top:10px;
+  font-size: 1.25rem;
   @media ${({theme})=>theme.mediaQueries.small}{
     margin:0;
   }
@@ -48,6 +50,7 @@ const Footer = ()=>{
       >
         <FontAwesomeIcon icon={faInstagram} />
       </Instagram>
+
     </Container>
   )
 }

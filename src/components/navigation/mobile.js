@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
 import StoreContext from "../../provider/context"
+import disableScroll from "disable-scroll"
 
 const Wrapper = styled.div`
   cursor: pointer;
@@ -129,14 +130,19 @@ const Hamburger = ({ toggleNav, open }) => {
 
 export default function() {
   const [open, setOpen] = useState(false)
+
   function toggleNav() {
     setOpen(!open)
-    if (document.body.style.overflowY === "hidden") {
-      document.body.style.overflowY = "scroll"
-    } else {
-      document.body.style.overflowY = "hidden"
-    }
   }
+
+  useEffect(() => {
+    if (open) {
+      disableScroll.on()
+    } else {
+      disableScroll.off()
+    }
+  }, [open])
+
   const {
     store: { checkout },
   } = useContext(StoreContext)
