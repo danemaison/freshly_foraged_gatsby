@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Freshly Foraged | CBD Oil`,
-    description: `Freshly Foraged is committed to crafting products for our customers that will allow them to lead happier, healthier lives. Our products are created with high-quality cannabis extracts containing over 80 different cannabinoids in combination with a spectrum of other beneficial herbs and plant extracts.`,
+    description: `Freshly Foraged is committed to crafting products for our customers that will allow them to lead happier, healthier lives.`,
     author: `danemaison`,
   },
   plugins: [
